@@ -52,8 +52,13 @@ PHP_RSHUTDOWN_FUNCTION(libdeflate) {
 PHP_MINFO_FUNCTION(libdeflate)
 {
 	php_info_print_table_start();
-	php_info_print_table_header(2, "libdeflate support", "enabled");
-	php_info_print_table_header(2, "libdeflate library version", LIBDEFLATE_VERSION_STRING);
+#if defined(HAVE_BUNDLED_LIBDEFLATE)
+    php_info_print_table_row(2, "Libdeflate library", "bundled");
+	php_info_print_table_row(2, "Libdeflate library version", LIBDEFLATE_VERSION_STRING);
+#else
+    php_info_print_table_row(2, "Libdeflate library", "external");
+	php_info_print_table_row(2, "Libdeflate interface version", LIBDEFLATE_VERSION_STRING);
+#endif
 	php_info_print_table_end();
 }
 /* }}} */
