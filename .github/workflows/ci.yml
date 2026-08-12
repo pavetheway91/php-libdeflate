@@ -13,10 +13,13 @@ jobs:
     strategy:
       matrix:
         php: ['7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5', '8.6']
+        library: ['', 'system']
 
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          submodules: ${{ !matrix.library }}
+  
       - name: Setup PHP
         uses: shivammathur/setup-php@2.37.1
         with:
@@ -29,12 +32,20 @@ jobs:
            cmake . -DCMAKE_PREFIX_PATH=. -DCMAKE_INSTALL_PREFIX=.
            make install
            cd ..
-
+        if: ${{ matrix.library }}
+  
       - name: Build extension
         run: |
           phpize
-          PKG_CONFIG_PATH="${{ github.workspace }}/libdeflate/lib/pkgconfig" ./configure --with-libdeflate
+          ./configure --with-libdeflate
           make
+        if: ${{ !matrix.library }}
+      - name: Build extension (system libdeflate)
+        run: |
+          phpize
+          PKG_CONFIG_PATH="${{ github.workspace }}/libdeflate/lib/pkgconfig" ./configure --with-libdeflate --with-system-libdeflate
+          make
+        if: ${{ matrix.library }}
 
       - name: Run .phpt tests
         run: REPORT_EXIT_STATUS=1 NO_INTERACTION=1 TEST_PHP_ARGS="--show-diff" make test
