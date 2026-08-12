@@ -1,5 +1,5 @@
 # ext-libdeflate
-[![CI](https://github.com/pmmp/ext-libdeflate/actions/workflows/ci.yml/badge.svg)](https://github.com/pmmp/ext-libdeflate/actions/workflows/ci.yml)
+Keeping the lights on after [pmmp/ext-libdeflate](https://github.com/pmmp/ext-libdeflate) was archived.
 
 PHP bindings for [libdeflate](https://github.com/ebiggers/libdeflate), a zlib replacement with significantly better performance.
 
