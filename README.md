@@ -1,7 +1,19 @@
-# ext-libdeflate
+# php-libdeflate
 Keeping the lights on after [pmmp/ext-libdeflate](https://github.com/pmmp/ext-libdeflate) was archived.
 
 PHP bindings for [libdeflate](https://github.com/ebiggers/libdeflate), a zlib replacement with significantly better performance.
+
+## Installation
+
+### Pie
+With bundled libdeflate:
+```
+pie install pavetheway91/libdeflate
+```
+With system libdeflate:
+```
+pie install pavetheway91/libdeflate --with-system-libdeflate
+```
 
 ## Features
 At the time of writing, this extension only exposes libdeflate's compression APIs, since these are the simplest to implement.
