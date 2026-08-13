@@ -15,13 +15,17 @@ With system libdeflate:
 pie install pavetheway91/libdeflate --with-system-libdeflate
 ```
 
-## Features
-At the time of writing, this extension only exposes libdeflate's compression APIs, since these are the simplest to implement.
+### Binary packages
+Fedora / RHEL / Rocky packages available from [Remi's RPM repository](https://rpms.remirepo.net/)
 
-Since libdeflate doesn't support stream decompression, the decompression APIs are less useful unless you know the decompressed size of the data before decompressing it.
+## Features
+At the time of writing, only libdeflate's compression APIs are implemented.
 
 ## Performance
 Compared to `zlib_encode()`, a 40% performance improvement can be observed at level 1, rising to 50-70% at level 6 (default), for approximately the same compression ratios. Also, `libdeflate_deflate_compress()` was observed to sometimes be faster at level 6 compression than `zlib_encode()` at level 1 compression.
+
+## Compression levels
+Libdeflate provides compression levels up to 12. At level 12, compression ratio is in the same league as [zopfli](https://github.com/google/zopfli), but libdeflate wins in speed.
 
 ## API
 ```php
