@@ -15,6 +15,7 @@ jobs:
       matrix:
         arch: ["amd64", "arm64v8"]
         php: ['7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5', '8.6']
+        ts: ['nts', 'zts']
         library: ['', 'system']
         include:
           - arch: "amd64"
