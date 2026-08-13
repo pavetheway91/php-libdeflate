@@ -1,0 +1,20 @@
+{
+  "name": "pavetheway91/libdeflate",
+  "type": "php-ext",
+  "license": "MIT",
+  "description": "Compression with Libdeflate",
+  "require": {
+    "php": ">= 7.3.0"
+  },
+  "php-ext": {
+    "extension-name": "libdeflate",
+    "download-url-method": "pre-packaged-source",
+    "configure-options": [
+      {
+        "name": "with-system-libdeflate",
+        "description": "Use system libdeflate library",
+        "needs-value": false
+      }
+    ]
+  }
+}
