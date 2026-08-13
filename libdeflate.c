@@ -52,6 +52,7 @@ PHP_RSHUTDOWN_FUNCTION(libdeflate) {
 PHP_MINFO_FUNCTION(libdeflate)
 {
 	php_info_print_table_start();
+    php_info_print_table_row(2, "Extension version", PHP_LIBDEFLATE_VERSION);
 #if defined(HAVE_BUNDLED_LIBDEFLATE)
     php_info_print_table_row(2, "Libdeflate library", "bundled");
 	php_info_print_table_row(2, "Libdeflate library version", LIBDEFLATE_VERSION_STRING);
