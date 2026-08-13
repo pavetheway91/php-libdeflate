@@ -7,14 +7,22 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
 
     strategy:
       matrix:
+        arch: ["amd64", "arm64v8"]
         php: ['7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5', '8.6']
+        ts: ['nts', 'zts']
         library: ['', 'system']
-
+        include:
+          - arch: "amd64"
+            os: "ubuntu-24.04"
+          - arch: "arm64v8" 
+            os: "ubuntu-24.04-arm"
+  
     steps:
       - uses: actions/checkout@v4
         with:
